@@ -19,12 +19,20 @@ const getTextStyles = (node) => {
 };
 
 const buildDiv = (node) => {
-  const openTag = `<div class="${node.type}" style="${getTextStyles(node)}">`;
+  const openTag = `<div class="${node.type}" style="${getTextStyles(
+    node
+  )}" id=${node.name}>`;
   if (node.children) {
+    if (node.closingTag) {
+      node.children.at(-1).closingTag = node.closingTag + "</div>";
+      node.closingTag = null;
+    } else {
+      node.children.at(-1).closingTag = "</div>";
+    }
     stack.push(...node.children.reverse());
-    stack.at(-1).closingTag = "</div>";
     return openTag;
   }
+
   return openTag + "</div>";
 };
 
