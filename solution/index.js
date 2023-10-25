@@ -18,6 +18,16 @@ const getTextStyles = (node) => {
   return styleArr.join(" ");
 };
 
+const buildDiv = (node) => {
+  const openTag = `<div class="${node.type}" style="${getTextStyles(node)}">`;
+  if (node.children) {
+    stack.push(...node.children.reverse());
+    stack.at(-1).closingTag = "</div>";
+    return openTag;
+  }
+  return openTag + "</div>";
+};
+
 const PRIMITIVES = {
   TEXT: (node) => {
     return `
@@ -25,31 +35,9 @@ const PRIMITIVES = {
       ${node.characters}
       </span>`;
   },
-  FRAME: (node) => {
-    const openTag = `<div class="${node.type}" style="${getTextStyles(node)}">`;
-    if (node.children) {
-      stack.push(...node.children);
-      stack.at(-1).closingTag = "</div>";
-      return openTag;
-    }
-    return openTag + "</div>";
-  },
-  /*   INSTANCE: (node) => {
-    return buildBlock({
-      type: "div",
-      content: node.characters,
-      className: node.type,
-      style: getTextStyles(node),
-    });
-  },
-  RECTANGLE: (node) => {
-    return buildBlock({
-      type: "div",
-      content: node.characters,
-      className: node.type,
-      style: getTextStyles(node),
-    });
-  }, */
+  FRAME: (node) => buildDiv(node),
+  INSTANCE: (node) => buildDiv(node),
+  RECTANGLE: (node) => buildDiv(node),
 };
 
 const parse = (entry) => {
