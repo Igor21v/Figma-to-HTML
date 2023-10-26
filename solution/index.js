@@ -79,7 +79,7 @@ const getDivStyles = (node) => {
                 break;
             case 'fills':
                 const fills = value[0];
-                if (value.length) {
+                if (fills) {
                     styleArr.push(
                         `background-color: rgba(
                       ${255 * fills.color.r}, 
@@ -117,6 +117,19 @@ const getDivStyles = (node) => {
                     styleArr.push(
                         `width: ${node.absoluteBoundingBox.width}px;`,
                         `height: ${node.absoluteBoundingBox.height}px;`,
+                    );
+                }
+                break;
+            case 'effects':
+                const effect = value[0];
+                if (effect) {
+                    styleArr.push(
+                        `box-shadow: ${effect.offset.x}px 
+                        ${effect.offset.y}px 
+                        rgba(${255 * effect.color.r}, 
+                            ${255 * effect.color.g}, 
+                            ${255 * effect.color.b}, 
+                            ${effect.color.a});`,
                     );
                 }
                 break;
