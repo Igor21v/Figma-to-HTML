@@ -89,7 +89,6 @@ const getDivStyles = (node) => {
             case 'strokes':
                 if (value.length) {
                     const stroke = value[0];
-                    console.log(stroke);
                     styleArr.push(
                         `border: 
                         ${node.strokeWeight}px
@@ -99,6 +98,13 @@ const getDivStyles = (node) => {
                           ${255 * stroke.color.g}, 
                           ${255 * stroke.color.b}, 
                           ${stroke.color.a});`,
+                    );
+                }
+                break;
+            case 'primaryAxisSizingMode':
+                if (value === 'FIXED') {
+                    styleArr.push(
+                        `width: ${node.absoluteBoundingBox.width}px;`,
                     );
                 }
                 break;
@@ -127,6 +133,7 @@ const buildDiv = (node) => {
     return openTag + '</div>';
 };
 
+// Выборка типов блоков
 const PRIMITIVES = {
     TEXT: (node) => {
         return `
@@ -139,6 +146,7 @@ const PRIMITIVES = {
     RECTANGLE: (node) => buildDiv(node),
 };
 
+// Обходим дерево
 const parse = (entry) => {
     let html = `<link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
