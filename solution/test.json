@@ -1,0 +1,106 @@
+{
+  "id": "1:23",
+  "name": "Button",
+  "type": "INSTANCE",
+  "blendMode": "PASS_THROUGH",
+  "children": [
+      {
+          "id": "I1:23;1:22",
+          "name": "Text",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "absoluteBoundingBox": {
+              "x": -283,
+              "y": -77,
+              "width": 77,
+              "height": 18
+          },
+          "constraints": {
+              "vertical": "TOP",
+              "horizontal": "LEFT"
+          },
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "fills": [
+              {
+                  "blendMode": "NORMAL",
+                  "type": "SOLID",
+                  "color": { "r": 1, "g": 1, "b": 1, "a": 1 }
+              }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "OUTSIDE",
+          "effects": [],
+          "characters": "К товарам",
+          "style": {
+              "fontFamily": "Inter",
+              "fontPostScriptName": "Inter-Medium",
+              "fontWeight": 500,
+              "textAutoResize": "WIDTH_AND_HEIGHT",
+              "fontSize": 15,
+              "textAlignHorizontal": "CENTER",
+              "textAlignVertical": "TOP",
+              "letterSpacing": 0,
+              "lineHeightPx": 17.578125,
+              "lineHeightPercent": 100,
+              "lineHeightUnit": "INTRINSIC_%"
+          },
+          "characterStyleOverrides": [],
+          "styleOverrideTable": {}
+      }
+  ],
+  "absoluteBoundingBox": {
+      "x": -299,
+      "y": -85,
+      "width": 109,
+      "height": 34
+  },
+  "constraints": { "vertical": "TOP", "horizontal": "LEFT" },
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "clipsContent": true,
+  "background": [
+      {
+          "blendMode": "NORMAL",
+          "type": "SOLID",
+          "color": {
+              "r": 0.05416666716337204,
+              "g": 0.05416666716337204,
+              "b": 0.05416666716337204,
+              "a": 1
+          }
+      }
+  ],
+  "fills": [
+      {
+          "blendMode": "NORMAL",
+          "type": "SOLID",
+          "color": {
+              "r": 0.05416666716337204,
+              "g": 0.05416666716337204,
+              "b": 0.05416666716337204,
+              "a": 1
+          }
+      }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "backgroundColor": {
+      "r": 0.05416666716337204,
+      "g": 0.05416666716337204,
+      "b": 0.05416666716337204,
+      "a": 1
+  },
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": 10,
+  "counterAxisAlignItems": "CENTER",
+  "primaryAxisAlignItems": "CENTER",
+  "paddingLeft": 16,
+  "paddingRight": 16,
+  "paddingTop": 8,
+  "paddingBottom": 8,
+  "effects": [],
+  "componentId": "1:21"
+},
