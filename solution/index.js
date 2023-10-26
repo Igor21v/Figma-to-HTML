@@ -77,14 +77,18 @@ const getDivStyles = (node) => {
             case 'paddingBottom':
                 styleArr.push(`padding-bottom: ${value}px;`);
                 break;
-            case 'backgroundColor':
-                styleArr.push(
-                    `background-color: rgba(
-                      ${255 * value.r}, 
-                      ${255 * value.g}, 
-                      ${255 * value.b}, 
-                      ${value.a});`,
-                );
+            case 'fills':
+                const fills = value[0];
+                if (value.length) {
+                    styleArr.push(
+                        `background-color: rgba(
+                      ${255 * fills.color.r}, 
+                      ${255 * fills.color.g}, 
+                      ${255 * fills.color.b}, 
+                      ${fills.color.a});`,
+                    );
+                }
+
                 break;
             case 'strokes':
                 if (value.length) {
@@ -101,10 +105,18 @@ const getDivStyles = (node) => {
                     );
                 }
                 break;
-            case 'primaryAxisSizingMode':
+            case 'counterAxisSizingMode':
                 if (value === 'FIXED') {
                     styleArr.push(
                         `width: ${node.absoluteBoundingBox.width}px;`,
+                    );
+                }
+                break;
+            case 'type':
+                if (value === 'RECTANGLE') {
+                    styleArr.push(
+                        `width: ${node.absoluteBoundingBox.width}px;`,
+                        `height: ${node.absoluteBoundingBox.height}px;`,
                     );
                 }
                 break;
