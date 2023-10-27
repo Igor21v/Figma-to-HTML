@@ -5,4 +5,5 @@
     align-items: center;
     background-color: rgba(red, green, blue, alpha);
     font-family: 'inter';
+    box-sizing: content-box;
 }

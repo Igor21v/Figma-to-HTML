@@ -5,6 +5,7 @@ const TEXT_STYLES_MAPPER = {
     fontSize: (value) => `font-size: ${value}px;`,
     fontWeight: (value) => `font-weight: ${value};`,
     textAlignHorizontal: (value) => `text-align: ${value.toLowerCase()};`,
+    lineHeightPx: (value) => `line-height: ${value}px;`,
     fills: (value) => `color: rgba(
       ${255 * value.color.r}, 
       ${255 * value.color.g}, 
@@ -45,11 +46,17 @@ const getTextStyles = (node) => {
 };
 
 const getDivStyles = (node) => {
-    const styleArr = ['display: flex;'];
+    /*  'box-sizing: border-box;' */
+    const styleArr = [];
     for (let [key, value] of Object.entries(node)) {
         switch (key) {
             case 'itemSpacing':
-                styleArr.push(`gap: ${value}px;`);
+                styleArr.push('display: flex;', `gap: ${value}px;`);
+                if (node.counterAxisAlignItems === 'CENTER') {
+                    styleArr.push('align-items: center;');
+                } else if (node.type === 'INSTANCE') {
+                    styleArr.push('align-items: start;');
+                }
                 break;
             case 'layoutMode':
                 value === 'VERTICAL' &&
@@ -60,9 +67,9 @@ const getDivStyles = (node) => {
                     styleArr.push('justify-content: space-between;');
                 value === 'CENTER' && styleArr.push('justify-content: center;');
                 break;
-            case 'counterAxisAlignItems':
+            /*             case 'counterAxisAlignItems':
                 value === 'CENTER' && styleArr.push('align-items: center;');
-                break;
+                break; */
             case 'paddingLeft':
                 styleArr.push(`padding-left: ${value}px;`);
                 break;
@@ -112,6 +119,13 @@ const getDivStyles = (node) => {
                     );
                 }
                 break;
+            case 'primaryAxisSizingMode':
+                if (value === 'FIXED') {
+                    styleArr.push(
+                        `width: ${node.absoluteBoundingBox.width}px;`,
+                    );
+                }
+                break;
             case 'type':
                 if (value === 'RECTANGLE') {
                     styleArr.push(
@@ -132,6 +146,9 @@ const getDivStyles = (node) => {
                             ${effect.color.a});`,
                     );
                 }
+                break;
+            case 'layoutAlign':
+                value === 'STRETCH' && styleArr.push(`width: 100%;`);
                 break;
             default:
                 break;
