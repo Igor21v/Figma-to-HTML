@@ -27,14 +27,14 @@ const getTextStyles = (node) => {
             case 'fills':
                 styleArr.push(
                     `color: rgba(
-                  ${255 * value[0].color?.r}, 
-                  ${255 * value[0].color?.g}, 
-                  ${255 * value[0].color?.b}, 
-                  ${value[0].color?.a});`,
+                  ${255 * value[0].color.r}, 
+                  ${255 * value[0].color.g}, 
+                  ${255 * value[0].color.b}, 
+                  ${value[0].color.a});`,
                 );
                 break;
             case 'absoluteBoundingBox':
-                if (node.style?.textAutoResize === 'HEIGHT') {
+                if (node.style.textAutoResize === 'HEIGHT') {
                     styleArr.push(`width: ${value.width}px;`);
                 }
                 break;
@@ -163,10 +163,12 @@ const buildDiv = (node) => {
                     id=${node.name}>`;
     if (node.children) {
         if (node.closingTag) {
-            node.children.at(-1).closingTag = node.closingTag + '</div>';
+            // метод at в node 12 не поддерживается
+            node.children[node.children.length - 1].closingTag =
+                node.closingTag + '</div>';
             node.closingTag = null;
         } else {
-            node.children.at(-1).closingTag = '</div>';
+            node.children[node.children.length - 1].closingTag = '</div>';
         }
         stack.push(...node.children.reverse());
         return openTag;
