@@ -54,7 +54,7 @@ const getDivStyles = (node) => {
                 styleArr.push('display: flex;', `gap: ${value}px;`);
                 if (node.counterAxisAlignItems === 'CENTER') {
                     styleArr.push('align-items: center;');
-                } else if (node.type === 'INSTANCE') {
+                } else {
                     styleArr.push('align-items: start;');
                 }
                 break;
