@@ -47,11 +47,11 @@ const getTextStyles = (node) => {
 
 const getDivStyles = (node) => {
     /*  'box-sizing: border-box;' */
-    const styleArr = [];
+    const styleArr = ['display: flex;'];
     for (let [key, value] of Object.entries(node)) {
         switch (key) {
             case 'itemSpacing':
-                styleArr.push('display: flex;', `gap: ${value}px;`);
+                styleArr.push(`gap: ${value}px;`);
                 if (node.counterAxisAlignItems === 'CENTER') {
                     styleArr.push('align-items: center;');
                 } else {
@@ -192,9 +192,7 @@ const PRIMITIVES = {
 
 // Обходим дерево
 const parse = (entry) => {
-    let html = `<link rel="preconnect" href="https://rsms.me/">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    `;
+    let html = ``;
     stack.push(entry.children[0]);
     while (stack.length) {
         const node = stack.pop();

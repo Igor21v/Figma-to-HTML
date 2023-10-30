@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const solution = require('./solution');
 
 const INPUT_PATH = path.resolve(__dirname, './input/input.json');
@@ -14,6 +14,8 @@ const html = `
         <meta charset="UTF-8" />
     </head>
     <body style="padding: 0; margin: 0;">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         ${solution(json)}
     </body>
     </html>
