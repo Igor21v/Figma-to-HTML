@@ -6,4 +6,5 @@
     background-color: rgba(red, green, blue, alpha);
     font-family: 'inter';
     box-sizing: content-box;
+    align-items: baseline;
 }

@@ -53,10 +53,23 @@ const getDivStyles = (node) => {
         switch (key) {
             case 'itemSpacing':
                 styleArr.push(`gap: ${value}px;`);
-                if (node.counterAxisAlignItems === 'CENTER') {
-                    styleArr.push('align-items: center;');
-                } else {
-                    styleArr.push('align-items: start;');
+            case 'counterAxisAlignItems':
+                switch (value) {
+                    case 'MAX':
+                        styleArr.push('align-items: end;');
+                        break;
+
+                    case 'CENTER':
+                        styleArr.push('align-items: center;');
+                        break;
+
+                    case 'BASELINE':
+                        styleArr.push('align-items: baseline;');
+                        break;
+
+                    default:
+                        styleArr.push('align-items: start;');
+                        break;
                 }
                 break;
             case 'layoutMode':
