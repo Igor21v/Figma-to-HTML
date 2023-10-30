@@ -22,6 +22,7 @@ const getTextStyles = (node) => {
                     if (TEXT_STYLES_MAPPER[key]) {
                         styleArr.push(TEXT_STYLES_MAPPER[key](value));
                     }
+                    222;
                 }
                 break;
             case 'fills':
@@ -66,10 +67,8 @@ const getDivStyles = (node) => {
                 value === 'SPACE_BETWEEN' &&
                     styleArr.push('justify-content: space-between;');
                 value === 'CENTER' && styleArr.push('justify-content: center;');
+                value === 'MAX' && styleArr.push('justify-content: end;');
                 break;
-            /*             case 'counterAxisAlignItems':
-                value === 'CENTER' && styleArr.push('align-items: center;');
-                break; */
             case 'paddingLeft':
                 styleArr.push(`padding-left: ${value}px;`);
                 break;
@@ -113,14 +112,14 @@ const getDivStyles = (node) => {
                 }
                 break;
             case 'counterAxisSizingMode':
-                if (value === 'FIXED') {
+                if (value === 'FIXED' && node.layoutMode === 'VERTICAL') {
                     styleArr.push(
                         `width: ${node.absoluteBoundingBox.width}px;`,
                     );
                 }
                 break;
             case 'primaryAxisSizingMode':
-                if (value === 'FIXED') {
+                if (value === 'FIXED' && node.layoutMode === 'HORIZONTAL') {
                     styleArr.push(
                         `width: ${node.absoluteBoundingBox.width}px;`,
                     );
